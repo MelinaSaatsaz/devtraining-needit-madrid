@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>MS_Test</name>
+        <run_as display_value="Melina Saatsaz">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2019-09-11 15:32:06</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[var count = new GlideAggregate('x_58872_needit_needit');
+count.addAggregate('COUNT');
+/*count.addQuery('state', 13);*/
+count.addEncodedQuery('priority=1^ORstate=3');
+count.query();
+var recs = 0;
+if (count.next()){
+	recs = count.getAggregate('COUNT');
+	
+}
+gs.info("REturned Aggregate rowcount: "+ recs);
+
+var myObj = new GlideRecord('x_58872_needit_needit');
+myObj.addQuery('priority=1^ORstate=3');
+myObj.query();
+gs.info("returned by get rowcount: "+ myObj.getRowCount());
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-09-11 15:35:51</sys_created_on>
+        <sys_id>f915c2464f7b7300afd8aa2f9310c774</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>MS_Test</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sysauto_script_f915c2464f7b7300afd8aa2f9310c774</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-09-17 15:03:20</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
